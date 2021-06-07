@@ -13,6 +13,9 @@
       <p @click="addd(obj)">{{ obj.d }}</p>
       <p @click="adde(obj)">{{ obj.e }}</p>
     </div>
+
+    <Top />
+    <Left />
   </div>
 </template>
 
@@ -24,6 +27,8 @@ export default {
   name: "Home",
   components: {
     HelloWorld,
+    Top,
+    Left
   },
   data() {
     return {
@@ -32,6 +37,10 @@ export default {
       obj: {},
       main: { name: "", age: 18 },
       main1: '',
+      all:{
+        a:1,
+        b:2
+      }
     };
   },
   created() {
@@ -43,6 +52,13 @@ export default {
     // this.obj.e = 0;
     this.$set(this.obj, "e", 0);
     console.log("after--", this.obj);
+  },
+  computed:{
+    data: function(){
+      var obj={}
+      obj=JSON.parse(JSON.stringify(this.all));
+      return obj
+    }
   },
   methods: {
     getshow() {
