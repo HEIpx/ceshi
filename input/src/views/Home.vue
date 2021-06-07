@@ -14,21 +14,23 @@
       <p @click="adde(obj)">{{ obj.e }}</p>
     </div>
 
-    <Top />
-    <Left />
+    <Top :tit1='data' :tit2='all' />
+    <Left :tit1='data' />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import Top from "@/components/Top.vue";
+import Left from "@/components/Left.vue";
 
 export default {
   name: "Home",
   components: {
     HelloWorld,
     Top,
-    Left
+    Left,
   },
   data() {
     return {
@@ -36,16 +38,18 @@ export default {
       asd: false,
       obj: {},
       main: { name: "", age: 18 },
-      main1: '',
-      all:{
-        a:1,
-        b:2
-      }
+      main1: "",
+      all: {
+        a: 1,
+        b: 2,
+      },
     };
   },
   created() {
     this.isEmpty(this.main);
     this.isEmpty1(this.main1);
+    this.abc();
+    
   },
   mounted() {
     this.obj = { d: 0 };
@@ -53,12 +57,13 @@ export default {
     this.$set(this.obj, "e", 0);
     console.log("after--", this.obj);
   },
-  computed:{
-    data: function(){
-      var obj={}
-      obj=JSON.parse(JSON.stringify(this.all));
-      return obj
-    }
+  computed: {
+    data: function() {
+      var obj = {};
+      obj = JSON.parse(JSON.stringify(this.all));
+      console.log(obj);
+      return obj;
+    },
   },
   methods: {
     getshow() {
@@ -89,6 +94,10 @@ export default {
       } else {
         return false;
       }
+    },
+    abc() {
+      console.log(this.data);
+      console.log(this.all);
     },
   },
 };
