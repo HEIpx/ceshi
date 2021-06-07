@@ -39,6 +39,7 @@ export default {
       obj: {},
       main: { name: "", age: 18 },
       main1: "",
+      // 数据 供子组件使用
       all: {
         a: 1,
         b: 2,
@@ -53,11 +54,12 @@ export default {
   },
   mounted() {
     this.obj = { d: 0 };
-    // this.obj.e = 0;
-    this.$set(this.obj, "e", 0);
+    // this.obj.e = 0; //视图不会更新
+    this.$set(this.obj, "e", 0);  //向原有数据添加新的属性 视图会更新
     console.log("after--", this.obj);
   },
   computed: {
+    // 解决多个子组件使用根组件数据,造成混乱
     data: function() {
       var obj = {};
       obj = JSON.parse(JSON.stringify(this.all));
@@ -66,6 +68,7 @@ export default {
     },
   },
   methods: {
+    //   实现显示input框 并且输入框获取焦点
     getshow() {
       this.asd = !this.asd;
       // this.$refs.editTask.onfocus();  data改变后vue是异步响应的
@@ -96,7 +99,9 @@ export default {
       }
     },
     abc() {
+      // 根组件传递给子组件的数组
       console.log(this.data);
+      // 根组件 数据
       console.log(this.all);
     },
   },
