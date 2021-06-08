@@ -62,12 +62,16 @@ export default {
     // 解决多个子组件使用根组件数据,造成混乱
     data: function() {
       var obj = {};
+      // JSON.parse 转化为js对象   JSON.stringify 转化为字符串
       obj = JSON.parse(JSON.stringify(this.all));
-      console.log(obj);
+      // console.log(JSON.stringify(this.all));
+      // console.log(obj);
       return obj;
     },
+    
   },
   methods: {
+    
     //   实现显示input框 并且输入框获取焦点
     getshow() {
       this.asd = !this.asd;
