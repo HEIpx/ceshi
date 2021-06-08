@@ -75,7 +75,7 @@ export default {
     //   实现显示input框 并且输入框获取焦点
     getshow() {
       this.asd = !this.asd;
-      // this.$refs.editTask.onfocus();  data改变后vue是异步响应的
+      // this.$refs.getFocus.focus();  //data改变后vue是异步响应的
       this.$nextTick(() => this.$refs.getFocus.focus());
     },
     addd(item) {
